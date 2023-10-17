@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<h3>할 일</h3>
+<h3>할 일 추가 프로그램</h3>
 <h4>
     <form action="/add" method="post">
         <input type="text" name="todo" placeholder="할 일을 입력하세요">
