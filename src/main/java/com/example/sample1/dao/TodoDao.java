@@ -36,4 +36,11 @@ public interface TodoDao {
         VALUES (#{todo.id}, #{fileName})
         """)
     int insertFile(Todo todo, String fileName);
+
+    @Select("""
+        SELECT name
+        FROM todoFile
+        WHERE todoId = #{todoId}
+        """)
+    List<String> selectFilesByTodoId(Integer todoId);
 }

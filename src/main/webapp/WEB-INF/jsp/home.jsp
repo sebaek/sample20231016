@@ -39,7 +39,13 @@
             <tr>
                 <td>${todo.id}</td>
                 <td>${todo.todo}</td>
-                <td>${todo.numOfFiles}</td>
+                <td>
+                    <c:if test="${todo.numOfFiles > 0}">
+                        <a href="/files?id=${todo.id}">
+                            ${todo.numOfFiles}
+                        </a>
+                    </c:if>
+                </td>
                 <td>${todo.inserted}</td>
             </tr>
         </c:forEach>

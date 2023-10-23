@@ -14,6 +14,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +26,9 @@ public class TodoService {
 
     @Value("${aws.bucketName}")
     private String bucketName;
+
+    @Value("${image.url.prefix}")
+    private String urlPrefix;
 
     public List<Todo> list() {
         return dao.list();
@@ -53,5 +57,13 @@ public class TodoService {
             }
         }
         return count == 1;
+    }
+
+    public List<String> listFiles(Integer todoId) {
+        List<String> list = dao.selectFilesByTodoId(todoId);
+
+        return list.stream()
+                .map(e -> urlPrefix + "/" + todoId + "/" + e)
+                .collect(Collectors.toList());
     }
 }
