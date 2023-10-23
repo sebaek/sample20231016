@@ -16,7 +16,12 @@ import java.util.List;
 @Mapper
 public interface TodoDao {
 
-    @Select("SELECT * FROM todo ORDER BY id DESC")
+    @Select("""
+        SELECT t.id, t.todo, t.inserted, COUNT(f.todoId) numOfFiles
+        FROM todo t LEFT JOIN todoFile f ON t.id = f.todoId
+        GROUP BY t.id
+        ORDER BY t.id DESC
+        """)
     public List<Todo> list();
 
     @Insert("""

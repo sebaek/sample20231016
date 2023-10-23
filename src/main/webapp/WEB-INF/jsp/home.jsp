@@ -32,12 +32,14 @@
         <tr>
             <th>id</th>
             <th>todo</th>
+            <th>파일</th>
             <th>입력일시</th>
         </tr>
         <c:forEach items="${todoList}" var="todo">
             <tr>
                 <td>${todo.id}</td>
                 <td>${todo.todo}</td>
+                <td>${todo.numOfFiles}</td>
                 <td>${todo.inserted}</td>
             </tr>
         </c:forEach>
