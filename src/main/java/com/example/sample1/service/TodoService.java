@@ -36,6 +36,10 @@ public class TodoService {
         if (files != null && files.length > 0) {
             for (MultipartFile file : files) {
                 if (file.getSize() > 0) {
+                    // todoFile 테이블에 insert
+                    dao.insertFile(todo, file.getOriginalFilename());
+
+                    // aws에 upload
                     String key = "sample1/" + todo.getId() + "/" + file.getOriginalFilename();
                     PutObjectRequest request = PutObjectRequest.builder()
                             .key(key)

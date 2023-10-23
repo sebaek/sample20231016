@@ -25,4 +25,10 @@ public interface TodoDao {
             """)
     @Options(useGeneratedKeys = true, keyProperty = "id")
     public int insert(Todo todo);
+
+    @Insert("""
+        INSERT INTO todoFile (todoId, name)
+        VALUES (#{todo.id}, #{fileName})
+        """)
+    int insertFile(Todo todo, String fileName);
 }
