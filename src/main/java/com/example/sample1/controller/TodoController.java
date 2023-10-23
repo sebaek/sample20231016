@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class TodoController {
     @PostMapping("/add")
     public String add (Todo todo,
                        MultipartFile[] files,
-                       RedirectAttributes rttr) throws SQLException {
+                       RedirectAttributes rttr) throws SQLException, IOException {
         // 새 할 일 추가 하고
         boolean result = service.insert(todo, files);
         // 결과 model에 넣고
