@@ -14,8 +14,12 @@
 <body>
 <h3>할 일 추가 프로그램</h3>
 <h4>
-    <form action="/add" method="post">
+    <form action="/add" method="post" enctype="multipart/form-data">
         <input type="text" name="todo" placeholder="할 일을 입력하세요">
+        <div>
+            첨부파일
+            <input type="file" accept="image/*" multiple name="files">
+        </div>
         <button>추가</button>
     </form>
 </h4>

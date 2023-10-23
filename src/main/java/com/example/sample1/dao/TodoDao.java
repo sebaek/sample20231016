@@ -3,6 +3,7 @@ package com.example.sample1.dao;
 import com.example.sample1.domain.Todo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,5 +23,6 @@ public interface TodoDao {
             INSERT INTO todo (todo)
             VALUE (#{todo})  
             """)
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     public int insert(Todo todo);
 }
